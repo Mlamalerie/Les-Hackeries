@@ -63,9 +63,18 @@ def capturer(temps):
 	go_zip(dateajd,photo)
 	time.sleep(temps)
 
-while 1:
-	capturer(intervalles_screen)
+def TRY_CAPTURE(n,att):
+	global intervalles_screen
+	if n > 0:
+		try:
+			while 1:
+				capturer(intervalles_screen)
+		
+		except:
+			print(" ----------------------------------------! ERREUR capturer")
+			time.sleep(att)
+			TRY_CAPTURE(n-1,att) 
     
-
+TRY_CAPTURE(5,(60*2))
 	  
 
