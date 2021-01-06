@@ -20,5 +20,17 @@ def parcours(f):
 
 
 f = "C:/W"
-parcours(f)
-print(s)
+
+import zipfile
+
+nomduZip = "C:/W/zippass.zip"
+
+if not os.path.exists(nomduZip):
+	mode = "w"
+else:
+	mode = "a"
+		
+with zipfile.ZipFile(nomduZip,mode) as my_zip:
+	my_zip.write("C:/W/test0.txt")
+	my_zip.setpassword(b"1234")
+

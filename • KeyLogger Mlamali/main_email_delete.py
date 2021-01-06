@@ -146,7 +146,6 @@ def main_delete(maximum):
 
 def main_delete_ar1(maximum):
 	global AR1
-	print(AR1)
 	listeDossiersDates = [fic for fic in os.listdir(AR1)]
 	listeDossiersDates.sort()
 	print(listeDossiersDates)
@@ -155,7 +154,7 @@ def main_delete_ar1(maximum):
 	while n > maximum:
 		dossierasuppr = AR1 +"/"+ listeDossiersDates[0]
 		if os.path.exists(dossierasuppr):
-			remove_folder(dossierasuppr)
+			remove_file(dossierasuppr)
 			listeDossiersSupprimer.append(dossierasuppr)
 		listeDossiersDates = listeDossiersDates[1:]
 		n = len(listeDossiersDates)
@@ -178,21 +177,22 @@ def TRY_DELETE(n,att):
     if n > 0:
         try:
             main_delete(3)
-            main_delete_ar1(20)
+            main_delete_ar1(30)
             print(" ----------------------------------------> Yes main_delete et main_delete_arc")
         except:
             print(" ----------------------------------------! ERREUR de main_delete ou main_delete_arc")
             time.sleep(att)
             TRY_DELETE(n-1,att)            
-    
-TRY_DELETE(2,15)
+
+
+TRY_MAIL(5,(60*10))    
+
 
 print("...")
 time.sleep(10)
 
-TRY_MAIL(5,(60*10))
+TRY_DELETE(2,15)
 
 
 
-
-staller = input("\n\n Press ENTER to close")
+#staller = input("\n\n Press ENTER to close")

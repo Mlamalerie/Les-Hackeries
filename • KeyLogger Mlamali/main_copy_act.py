@@ -25,7 +25,6 @@ if not os.path.exists(nomEmplacementSauvegarde):
 time.sleep(30)
 while 1:
 	
-	
 	ancien = nomEmplacementBase + "/" + dateajd + "/" + nomfile
 	nouveau = nomEmplacementSauvegarde+ "/" +nomfile
 	if os.path.isfile(ancien):
