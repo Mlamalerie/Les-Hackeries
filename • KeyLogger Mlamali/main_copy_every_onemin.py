@@ -4,7 +4,10 @@ import datetime
 from shutil import copyfile
 dateajd = datetime.datetime.now().strftime('%Y-%m-%d')
 username = os.getlogin()
-nomEmplacementBase = "C:/data_key_screen"
+
+from others.variables_param import NOM_DOSSIER_SECRET
+
+nomEmplacementBase = NOM_DOSSIER_SECRET
 nomEmplacementSauvegarde = nomEmplacementBase
 if not os.path.exists(nomEmplacementSauvegarde):
 	os.makedirs(nomEmplacementSauvegarde)
@@ -18,6 +21,7 @@ nomEmplacementSauvegarde += "/act"
 if not os.path.exists(nomEmplacementSauvegarde):
 	os.makedirs(nomEmplacementSauvegarde)
 
+
 time.sleep(30)
 while 1:
 	
@@ -27,7 +31,9 @@ while 1:
 	if os.path.isfile(ancien):
 		print("copy")
 		copyfile(ancien,nouveau)
+		
 		time.sleep(60)
+		
 			
 	else:
 		print("no file txt")

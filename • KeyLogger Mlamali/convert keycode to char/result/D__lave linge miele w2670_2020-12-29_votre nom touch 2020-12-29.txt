@@ -1,0 +1,32 @@
+
+balan
+ 20:21 # Key.space
+ 20:21 # Key.space
+debarquement
+ 20:21 # Key.space
+docllelouche
+ 20:21 # Key.enter
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+ 20:21 # Key.backspace
+camille
+ 20:21 # Key.space
+llelou

@@ -1,0 +1,290 @@
+
+alli
+ 13:52 # Key.caps_lock
+é
+ 13:52 # Key.backspace
+ 13:52 # Key.caps_lock
+é
+ 13:52 # Key.enter
+thione
+ 13:52 # Key.space
+digo
+ 13:52 # Key.space
+costa
+ 13:52 # Key.enter
+gamemix
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+doria
+ 13:52 # Key.enter
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+chinoi
+ 13:52 # Key.enter
+ 13:52 # Key.backspace
+mousk
+ 13:52 # Key.enter
+ 13:52 # Key.space
+mirroi
+ 13:52 # Key.enter
+ 13:52 # Key.backspace
+ 13:52 # Key.space
+melaq
+ 13:52 # Key.backspace
+ncochiimgkoa
+ 13:52 # Key.enter
+wixola
+ 13:52 # Key.caps_lock
+é
+ 13:52 # Key.caps_lock
+s_
+ 13:52 # Key.enter
+ 13:52 # Key.backspace
+ 13:52 # Key.enter
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+oo
+ 13:52 # Key.enter
+doria
+ 13:52 # Key.space
+julcourbe
+ 13:52 # Key.space
+voi
+ 13:52 # Key.enter
+ 13:52 # Key.backspace
+inbalance
+ 13:52 # Key.space
+ton
+ 13:52 # Key.space
+por
+ 13:52 # Key.backspace
+stmus
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.space
+mu
+ 13:52 # Key.backspace
+thione
+ 13:52 # Key.space
+niang
+ 13:52 # Key.enter
+balance
+ 13:52 # Key.space
+tonn
+ 13:52 # Key.space
+podt
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+st
+ 13:52 # Key.space
+mustafa
+ 13:52 # Key.enter
+ 13:52 # Key.backspace
+francisse
+ 13:52 # Key.space
+evra
+ 13:52 # Key.enter
+thionefrancisse
+ 13:52 # Key.space
+evra
+ 13:52 # Key.enter
+thithion
+ 13:52 # Key.space
+inves
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ter
+ 13:52 # Key.space
+allié$
+ 13:52 # Key.backspace
+ 13:52 # Key.enter
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+wixola
+ 13:52 # Key.caps_lock
+é
+ 13:52 # Key.caps_lock
+s
+ 13:52 # Key.enter
+ 13:52 # Key.space
+&
+ 13:52 # Key.space
+ 13:52 # Key.enter
+imgkoa
+ 13:52 # Key.enter
+doriado_do
+ 13:52 # Key.enter
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.enter
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.backspace
+ 13:52 # Key.enter
+kiki
+ 13:52 # Key.enter
+ 13:52 # Key.space
+lefilmtout
+ 20:37 # Key.space
+simplement
+ 20:37 # Key.space
+noi
+ 20:37 # Key.enter
+r
+ 20:37 # Key.enter
+ 20:37 # Key.enter
+brut
+ 20:37 # Key.enter
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+kon
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.enter
+teléprogramme
+ 20:37 # Key.enter
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+ 20:37 # Key.backspace
+red
+ 20:37 # Key.space
+bink
+ 20:37 # Key.space
+ch
+ 20:37 # Key.space
+ 20:37 # Key.space
+ 20:37 # Key.space
+doria
+ 20:37 # Key.enter
+ 20:37 # Key.backspace
+refait
+ 20:37 # Key.enter
