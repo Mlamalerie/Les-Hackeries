@@ -1,10 +1,24 @@
 import os
-import subprocess
-#os.system("python -m pip install --upgrade pip")
+s = 0
+def parcours(f):
+	global s
+	if os.path.exists(f):
+		if os.path.isdir(f):
+			print(" * dir ~",f)
+			for elem in os.listdir(f):
+				ef = f + "/" + elem
+				if os.path.isdir(ef):
+					print("dir ~",ef)
+					parcours(ef)
+					#s += 1
+				elif os.path.isfile(ef):
+					print("fil ~",ef)
+					s+= 1
+				else:
+					print('*')
+		
 
-commandinstall = f"ln -s {os.path.abspath(__file__)} ~/Bureau/"
 
-
-os.system(commandinstall)
-
-
+f = "C:/W"
+parcours(f)
+print(s)

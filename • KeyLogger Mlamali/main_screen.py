@@ -31,7 +31,7 @@ if not os.path.exists(nomEmplacementSauvegarde):
 	os.makedirs(nomEmplacementSauvegarde)
 
 # **** YEAH 
-intervalles_screen = 8
+intervalles_screen = 5
 import pyautogui
 
 # **** ARCH EN DIDI

