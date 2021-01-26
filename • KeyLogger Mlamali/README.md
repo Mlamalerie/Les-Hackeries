@@ -1,4 +1,4 @@
-# "KeyLogger + Screener + Mailman by Mlamali"
+# "KeyLogger + Screener + Mailman"
 
 ## installation
 🏁 run others/install/install_packages.py for install python modules required.
