@@ -5,7 +5,7 @@ Installations prérequis:
 • filecmp
 • tkinter 
 
-![screen](•%20Screeney/ico/Capture.png)
+![screen](ico/Capture.png)
 
 Sélectionner la matière du cours que vous suivez et screener votre écran en un clique. La photo sera rangée dans un dossier où les images sont classées par jour.
 Si vous prenez 2 photos de suite trop semblable alors la photo est supprimée... évitons les doublons (il me reste 500mo sur mon pc) :)
