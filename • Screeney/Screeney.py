@@ -37,10 +37,10 @@ window.geometry('320x210')
 #lbl.grid(column=0, row=0)
 labelChoix = Label(window, text = "Matières :")
 labelChoix.pack()
-listeMatieres=["Selectionner","AlgoProc", "Proba","TheoGraphes","MesureIntegration","Optimisation","BDD","EOE", "PPP","Compta" ]
+listeMatieres=["Selectionner","AlgoProc","DataMining","BDD","EOE", "PPP","Compta" ]
 listeMatieres.sort()
 listeCombo = ttk.Combobox(window,values=listeMatieres,state="readonly",justify='center',width=15)
-listeCombo.current(8)
+listeCombo.current(len(listeMatieres)-1)
 listeCombo.pack()
 
 c = 0
