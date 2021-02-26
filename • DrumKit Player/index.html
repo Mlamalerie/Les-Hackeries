@@ -23,8 +23,8 @@
             }
             .content {
                 padding-top: 40vh;
-             align-content: center.
-               
+                align-content: center.
+
             }
             #page-content {
                 flex: 1 0 auto;
@@ -32,7 +32,7 @@
 
             #sticky-footer {
                 flex-shrink: none;
-               
+
             }
 
             .btn.btn-primary {
@@ -49,22 +49,55 @@
                 }
             }
 
-            
+            form {
+                position:relative; margin:0 auto; max-width:800px; width:100%; 
+
+            }
+
+            .heading {
+                position:sticky;
+                text-align: center;
+                margin: 0;
+                margin: 3rem 0;
+                font-family: Inconsolata, monospace;
+                
+               
+            }
+
+
         </style>
     </head>
     <body class="d-flex flex-column ">
+
+        <header class="heading">
+            <h1>DrumKit Audio Player</h1>
+            <p>( by <a href="https://unsplash.com/">Mlamali SAID SALIMO</a> )</p>
+        </header>
+
         <div id="page-content">
-<form>
-            <div class="container content ">
-                <div class="form-group mx-auto mx-auto " x-data="{ fileName: '' }">
-                    <div class="input-group w-100 shadow">
-                        <span class="input-group-text px-3 text-muted"><i class="fas fa-image fa-lg"></i></span>
-                        <input type="file" x-ref="file" @change="fileName = $refs.file.files[0].name" name="img[]" class="d-none">
-                        <input type="text" class="form-control form-control-lg" placeholder="Selectionner un dossier" x-model="fileName">
-                        <button class="browse btn btn-primary px-4" type="button" x-on:click.prevent="$refs.file.click()"><i class="fas fa-image"></i> Browse</button>
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+            <form>
+                <div class="container content ">
+                    <div class="form-group mx-auto mx-auto p-5 bg-light rounded" x-data="{ fileName: '' }">
+                        <div class="input-group w-100 shadow ">
+                            <span class="input-group-text px-3 text-muted"><i class="fas fa-image fa-lg"></i></span>
+                            <input type="file" x-ref="file" @change="fileName = $refs.file.files[0].name" name="img[]" class="d-none">
+                            <input type="text" class="form-control form-control-lg" placeholder="Selectionner un dossier" x-model="fileName">
+                            <button class="browse btn btn-primary px-4" type="button" x-on:click.prevent="$refs.file.click()"><i class="fas fa-image"></i> Browse</button>
+                        </div>
                     </div>
                 </div>
-            </div>
             </form>
         </div>
 
@@ -72,16 +105,41 @@
 
         <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
             <div class="container text-center">
-               <a href="">Mlamali SAID SALIMO</a> <small>Copyright &copy; Your Website</small>
+                <small>Copyright &copy; Your Website</small>
             </div>
         </footer>
         <!-- Option 1: Bootstrap Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
-        <!-- Option 2: Separate Popper and Bootstrap JS -->
-        <!--
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
--->
+        <audio data-key="76" src="snare.wav"></audio>
+
+        <script type="text/javascript">
+
+            function playSound(e) {
+                const audio = document.querySelector(`audio[data-key="76"]`);
+                if (!audio) return; // if no audio, stop the func from running
+                audio.currentTime = 0; // rewind to start
+                audio.play();
+
+            }
+
+
+            //const keys = document.querySelectorAll('.key');
+            //keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+            window.addEventListener('keydown', playSound);
+
+
+
+        </script>
+
+
+        <script>
+
+            function browse_button():
+            return 0
+
+            var folder_path = browse_button()
+        </script>
     </body>
 </html>
