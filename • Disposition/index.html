@@ -111,8 +111,7 @@
             }
 
             .session-time {
-                margin-right: .7rem;
-                margin-left: .7rem;
+                min-width: 4.5rem;
             }
 
             .session-minus {
@@ -173,28 +172,20 @@
                 font-size: 5rem;
             }
 
-            .buttons {
-                display: flex;
-                flex-direction: row;
-                margin-top: 2rem;
-                flex-wrap: nowrap;
-                justify-content: center;
-                align-content: center;
-                align-items: center;
-            }
+
 
             .start-button {
                 display: block;
-                margin-right: 1rem;
 
-                height: 2rem;
+
+
                 border: 1px solid #c4402f;
                 border-radius: 4px;
                 background-color: #CC4331;
                 box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
                 color: white;
                 text-align: center;
-                text-align: center;
+
                 text-decoration: none;
                 text-shadow: 0 -1px -1px #af3a2a;
                 font-weight: 800;
@@ -230,10 +221,10 @@
 
         <div class="pomodoro-conteiner">
             <h1 class="title">Disposition <span id="heureTotal"></span> </h1>
-            <p class="subtitle">The Pomodoro Technique uses a timer to break down work into intervals, traditionally 25 minutes in length, separated by short breaks.</p>
+            <p class="subtitle">blabalbalbal blab alba l</p>
 
-            <input type="text" id="dispoheure"  placeholder="13-16; 20-01">
-            <input type="text" id="dispotxt" placeholder="matiere1, matiere2">
+            <input class="form-control" type="text" id="dispoheure"  value="13-16; 20-01">
+            <input class="form-control" type="text" id="dispotxt" value="DataMining, StatInf,CV">
 
             <div id="names" class="preferences">
 
@@ -241,6 +232,8 @@
                 <script>
                     var inputtxt = document.getElementById('dispotxt');
                     var inputheures = document.getElementById('dispoheure');
+                    var heureTotal;
+                    var DicMatiere = {};
 
                     function getMatiere() {
                         let txt = inputtxt.value.trim();
@@ -287,15 +280,48 @@
 
                     function createAllBtn() {
                         for(let i = 0 ; i < listesMatiere.length; i++) {
-                            creer1Btn(listesMatiere[i],10);
+                            creer1Btn(listesMatiere[i]);
                         }
 
                     }
 
-                    function creer1Btn(nomMatiere,nbH) {
+                    function afficherHorloge(nb) {
+                        let minutes = nb*60;
+
+                        let minutesrestantes = parseInt(minutes % 60);
+
+
+                        let heure = parseInt( parseInt(minutes/60));
+
+                        console.log("**",minutes,minutesrestantes,parseInt(minutesrestantes/30));
+                        if (parseInt(minutesrestantes/30) > 0){
+                            minutesrestantes = 30;
+                        }
+                        else{
+                            minutesrestantes = 0;
+                        }
+
+                        text = "";
+                        if (heure > 0){
+                            text += heure.toString() +"h ";
+                        }
+                        if (minutesrestantes > 0){
+                            text += minutesrestantes.toString();
+                        }
+                        if (text.length <= 1) {
+                            text="~";
+                        }
+                        return text
+
+                    }
+
+                    function creer1Btn(nomMatiere) {
+                        let nbH =  afficherHorloge(DicMatiere[nomMatiere]);
+                        console.log(DicMatiere);
+
                         let bay = document.createElement('div');
                         bay.setAttribute("class","session mx-3");
-                        bay.innerHTML = "<h4 id='session-label' class='session-title'>" + nomMatiere + "</h4>   <div class='plus-minus'>  <button id='session-plus'  class='session-plus' onclick='plus()'>+</button> <div id='nb-" + nomMatiere + "' class='session-time'>" + nbH + "</div>  <button id='session-minus'  class='session-minus' onclick='moins()'>–</button> </div> ";
+                        bay.innerHTML = "<h4 id='session-label' class='session-title'>" + nomMatiere + "</h4>   <div class='plus-minus'>  <button id='session-plus'  class='session-plus' onclick='plus(this)' value='" + nomMatiere + "' >+</button> <span id='nb-" + nomMatiere + "' class='session-time'>" + nbH + "</span>  <button id='session-minus'  class='session-minus' onclick='moin(this)'  value='" + nomMatiere + "' >–</button> </div> ";
 
                         divNames.appendChild(bay);
 
@@ -305,16 +331,79 @@
                         divNames.innerHTML = "";
                     }
 
+                    function createDic() {
+                        for(let i = 0; i< listesMatiere.length; i++) {
+                            DicMatiere[listesMatiere[i]] =  heureTotal/listesMatiere.length;
+                            console.log(heureTotal,listesMatiere.length);
+
+                        }
+                    }
+                    function majAfficheNum(val) {
+                        document.getElementById('nb-'+val).innerHTML =  afficherHorloge(DicMatiere[val] ) ;    
+                    }
+
+                    var pourcentage = 0.25;
+                    function plus(bay) { 
+                        console.log('plus');
+                        let diminpourcentage = (pourcentage/(listesMatiere.length-1));
+                        //let listeMa = Object.keys(DicMatiere);
+
+                        for(let i = 0; i < listesMatiere.length; i++) {
+                            if(listesMatiere[i] == bay.value) {
+                                DicMatiere[listesMatiere[i]] *= (1+pourcentage); 
+                                majAfficheNum(listesMatiere[i]);
+
+                            } else {
+                                DicMatiere[listesMatiere[i]] *= (1-diminpourcentage);
+                                majAfficheNum(listesMatiere[i]);
+                            }
+
+
+                        }
+                        majAfficheAllNum()
+                        console.log('+++++>',DicMatiere);
+
+                    }
+                    function moin(bay) {
+                        let diminpourcentage = (pourcentage/(listesMatiere.length-1));
+
+                        //let listeMa = Object.keys(DicMatiere);
+
+                        for(let i = 0; i < listesMatiere.length; i++) {
+                            if(listesMatiere[i] == bay.value) {
+                                DicMatiere[listesMatiere[i]] *= (1+pourcentage*-1); 
+                                majAfficheNum(listesMatiere[i]);
+
+                            } else {
+                                DicMatiere[listesMatiere[i]] *= (1-diminpourcentage*-1); 
+                                majAfficheNum(listesMatiere[i]);
+
+                            }
+
+                        }
+                        majAfficheAllNum();
+                        console.log('----->',DicMatiere);
+
+
+                    }
+
+
+
+
                     function refresh() {
 
                         listesMatiere = getMatiere();
                         console.log(listesMatiere);
-                        deleteAllBtn();
-                        createAllBtn();
+                        heureTotal = getHeures();
+                        document.getElementById('heureTotal').innerHTML = heureTotal + 'h';
+                        createDic();
+
+                        if (heureTotal > 0){
+                            deleteAllBtn();
+                            createAllBtn();
+                        }
 
 
-                        let HH = getHeures();
-                        document.getElementById('heureTotal').innerHTML = HH + 'h';
 
                     }
 
@@ -333,7 +422,7 @@
                 </div>
             </div>
             <div class="buttons">
-                <button id="start" class="start-button" onclick="refresh()">Refresh</button>
+                <button id="start" class="start-button px-5 py-3" onclick="refresh()">Refresh</button>
 
             </div>
         </div>

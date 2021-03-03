@@ -39,7 +39,7 @@ def afficherhorloge(nb):
 	
 	
 	heure = int(minutes//60)
-	
+	print(minutes,minutesrestantes,minutesrestantes//30)
 	if minutesrestantes//30 > 0:
 		minutesrestantes = 30
 	else:
@@ -78,9 +78,6 @@ def augm(l,choix,pourcentage):
 		c = int(choix[0])
 	
 	
-	
-	
-	
 	i = 0
 	
 	for mat in l:
@@ -103,6 +100,7 @@ def majmaj(listes):
 		return True
 		
 	listes = augm(listes,choix,0.25)
+	print(listes)
 	return False
 	
 ok = False
