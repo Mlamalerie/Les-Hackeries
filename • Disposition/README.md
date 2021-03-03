@@ -6,7 +6,7 @@ C'est simple.
 
 ### 📸 Screenshots 
 
-<img src="img/screen%20(1).png" width="500">
+<img src="img/screen%20(1).png">
 <img src="img/screen%20(2).png" width="500">
 
 
