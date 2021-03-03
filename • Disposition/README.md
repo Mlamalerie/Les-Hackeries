@@ -5,10 +5,8 @@ Outil pour s'organiser dans la journée.
 C'est simple.
 
 ### 📸 Screenshots 
-![](img/screen%20(1) "Screen 1")
-![](img/screen%20(2) "Screen 2")
+![](/img/screen%20(1).png "Screen 1")
+![](/img/screen%20(2).png "Screen 2")
 
 ---
-
-### 👨🏾‍💻 Auteur
 [Mlamali SAID SALIMO](https://www.linkedin.com/in/mlamalisaidsalimo)  <br/>
