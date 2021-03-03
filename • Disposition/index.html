@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        <style>
+
+            @import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,300,300italic,400italic,500,500italic,700,700italic&subset=latin,cyrillic);
+            body {
+                display: flex;
+                flex-direction: row;
+                margin: 0rem;
+                min-height: 100vh;
+                height: 100%;
+                background: linear-gradient( 135deg, tomato, tomato, #dd5239, #d4462d, #dd5239, #cc3c22);
+                color: snow;
+                font-weight: 400;
+                font-size: 16px;
+                font-family: 'Fira Sans', sans-serif;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-content: center;
+                align-items: center;
+            }
+
+            .pomodoro-conteiner {
+                margin-top: 0rem;
+                display: flex;
+                flex-direction: column;
+                width: 16rem;
+                height: 29rem;
+                order: 0;
+                flex: 0 1 auto;
+                align-self: auto;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-content: space-between;
+                align-items: center;
+            }
+
+            @media all and (min-width: 360px) {}
+
+            .title {
+                margin-top: 0rem;
+                margin-bottom: 0rem;
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 3rem;
+            }
+
+            .subtitle {
+                margin-top: 0rem;
+                text-align: center;
+                font-weight: 300;
+                font-size: 0.75rem;
+            }
+
+            .preferences {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                text-align: center;
+                font-size: 1.2rem;
+                flex-wrap: nowrap;
+                justify-content: space-around;
+            }
+
+
+            .session {}
+
+            .session-title {
+                margin-top: .5rem;
+                margin-bottom: .5rem;
+                transition: all 0.5s ease;
+            }
+
+            .session-plus {
+                display: block;
+                width: 1.7rem;
+                height: 1.7rem;
+                border: 1px solid #c4402f;
+                border-radius: 4px;
+                background-color: #CC4331;
+                box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                text-shadow: 0 -1px -1px #af3a2a;
+                font-weight: 800;
+                font-size: 1rem;
+                transition: all 0.15s ease-in-out;
+            }
+
+            .session-plus:hover {
+                background-color: #d25544;
+                box-shadow: 0 4px 0 #c4402f, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+                text-shadow: 0 -1px -1px #c4402f;
+            }
+
+            .session-plus:active {
+                margin-top: -1px;
+                box-shadow: none;
+            }
+
+            .session-time {
+                margin-right: .7rem;
+                margin-left: .7rem;
+            }
+
+            .session-minus {
+                display: block;
+                width: 1.7rem;
+                height: 1.7rem;
+                border: 1px solid #c4402f;
+                border-radius: 4px;
+                background-color: #CC4331;
+                box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                text-shadow: 0 -1px -1px #af3a2a;
+                font-weight: 800;
+                font-size: 1rem;
+                transition: all 0.15s ease-in-out;
+            }
+
+            .session-minus:hover {
+                background-color: #d25544;
+                box-shadow: 0 4px 0 #c4402f, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+                text-shadow: 0 -1px -1px #c4402f;
+            }
+
+            .session-minus:active {
+                margin-top: -1px;
+                box-shadow: none;
+            }
+
+            .plus-minus {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-content: center;
+                align-items: center;
+            }
+
+            .clock {
+                display: flex;
+                flex-direction: column;
+                width: 5rem;
+                height: 5rem;
+                font-size: 2rem;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-content: center;
+                align-items: center;
+            }
+
+            .clock-title {
+                margin-bottom: 0rem;
+            }
+
+            .timer {
+                font-weight: 800;
+                font-size: 5rem;
+            }
+
+            .buttons {
+                display: flex;
+                flex-direction: row;
+                margin-top: 2rem;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-content: center;
+                align-items: center;
+            }
+
+            .start-button {
+                display: block;
+                margin-right: 1rem;
+               
+                height: 2rem;
+                border: 1px solid #c4402f;
+                border-radius: 4px;
+                background-color: #CC4331;
+                box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+                color: white;
+                text-align: center;
+                text-align: center;
+                text-decoration: none;
+                text-shadow: 0 -1px -1px #af3a2a;
+                font-weight: 800;
+                font-size: 1rem;
+                transition: all 0.15s ease-in-out;
+            }
+
+            .start-button:hover {
+                background-color: #d25544;
+                box-shadow: 0 4px 0 #c4402f, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+                text-shadow: 0 -1px -1px #c4402f;
+            }
+
+            .start-button:active {
+                margin-top: -1px;
+                box-shadow: none;
+            }
+
+            
+
+            .red {
+                font-weight: 800;
+                font-size: 2rem;
+                transition: all 0.5s ease;
+            }
+        </style>
+
+
+        <title>Hello, world!</title>
+    </head>
+    <body onload="">
+
+
+        <div class="pomodoro-conteiner">
+            <h1 class="title">Disposition <span id="heureTotal"></span> </h1>
+            <p class="subtitle">The Pomodoro Technique uses a timer to break down work into intervals, traditionally 25 minutes in length, separated by short breaks.</p>
+
+            <input type="text" id="dispoheure"  placeholder="13-16; 20-01">
+            <input type="text" id="dispotxt" placeholder="matiere1, matiere2">
+
+            <div id="names" class="preferences">
+
+
+                <script>
+                    var inputtxt = document.getElementById('dispotxt');
+                    var inputheures = document.getElementById('dispotxt');
+
+                    function getMatiere() {
+                        let txt = inputtxt.value.trim();
+                        let res = txt.split(',')
+                        let res2 = []
+
+                        for(let i = 0 ; i < res.length; i++ ) {
+                            if (res[i].length >= 1)
+                                res2.push(res[i].trim());
+                            
+                        }
+                        return res2;
+
+                    }
+                    
+                    function getHeures() {
+                         let txt = inputheures.value.trim();
+                        let res = txt.split(',')
+                        let res2 = []
+
+                        for(let i = 0 ; i < res.length; i++ ) {
+                            if (res[i].length >= 1)
+                                res2.push(res[i].trim());
+                            
+                        }
+                        return res2;
+
+
+
+                    }
+                    
+                    
+                    var divNames = document.getElementById('names');
+                    var listesMatiere = ['Data',"math","caca"];
+
+                   
+
+                    function createAllBtn() {
+                        for(let i = 0 ; i < listesMatiere.length; i++) {
+                            creer1Btn(listesMatiere[i],10);
+                        }
+
+                    }
+
+                    function creer1Btn(nomMatiere,nbH) {
+                        let bay = document.createElement('div');
+                        bay.setAttribute("class","session mx-3");
+                        bay.innerHTML = "<h4 id='session-label' class='session-title'>" + nomMatiere + "</h4>   <div class='plus-minus'>  <button id='session-plus'  class='session-plus' onclick='plus()'>+</button> <div id='nb-" + nomMatiere + "' class='session-time'>" + nbH + "</div>  <button id='session-minus'  class='session-minus' onclick='moins()'>–</button> </div> ";
+
+                        divNames.appendChild(bay);
+
+                    }
+                    
+                    function deleteAllBtn() {
+                        divNames.innerHTML = "";
+                    }
+                    
+                    function refresh() {
+                        
+                        listesMatiere = getMatiere();
+                    console.log(listesMatiere);
+                        deleteAllBtn();
+                        createAllBtn();
+                        
+                        let HH = 8;
+                        document.getElementById('heureTotal').innerHTML = HH + 'h';
+                        
+                    }
+
+
+
+
+                </script>
+
+            </div>
+            <div id="clock" class="clock">
+                <h4 class="clock-title"></h4>
+                <div id="timer" class="timer">
+                    <div class="">
+<!--                        <div class="progress">25:00</div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+                <button id="start" class="start-button" onclick="refresh()">Refresh</button>
+             
+            </div>
+        </div>
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    </body>
+
+
+</html>
+
