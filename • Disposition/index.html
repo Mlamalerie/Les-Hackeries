@@ -9,7 +9,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="style.css">
 
-
+<link rel="shortcut icon" href="img/icon.ico">
 
 
         <title>Disposition</title>
@@ -18,15 +18,16 @@
 
 
         <div class="pomodoro-conteiner">
-            <header class="mb-4 p-5">
+            <header class="mb-2 p-5">
+                <p class="subtitle mt-2">(<a href="https://www.linkedin.com/in/mlamalisaidsalimo/" class="text-light">Mlamali SAID SALIMO</a>) </p>
                 <h1 class="title">Disposition <span id="heureTotal"></span> </h1>
-                <p class="subtitle mt-2">Saisisser vos plages horaires puis vos tâches à remplir dans la journée. Appuyer sur REFRESH. Ajuster le temps de travail selon vos envies ! <br>(<a href="https://www.linkedin.com/in/mlamalisaidsalimo/" class="text-light">Mlamali SAID SALIMO</a>)</p>
-               
+                <p class="subtitle mt-2">Saisisser vos plages horaires puis vos <a style="text-decoration: none;" class="text-light" href="https://drive.google.com/open?id=1Vgq55BCeg5xz9gTCFtZfquklHEc1LsPb&authuser=saidsalimo%40eisti.eu&usp=drive_fs" target="_blank">tâches à remplir dans la journée.</a>  Appuyer sur REFRESH. Ajuster le temps de travail selon vos envies ! <br> N'hésitez pas à zoomer la page [ctrl +]</p>
+
             </header>
 
 
             <input  class="form-control mb-3 p-2 py-3 form-control-sm text-light shadow-sm rounded text-center" type="text" id="dispoheure"  value="10-12; 14-17;">
-            <input class="form-control  mb-3 p-2 form-control-sm text-light shadow-sm rounded text-center " type="text" id="dispotxt" value="DataMining,  StatInf, Faire CV">
+            <input class="form-control  mb-3 p-2 form-control-sm text-light shadow-sm rounded text-center " type="text" id="dispotxt" placeholder="DataMining,  StatInf, Faire CV">
 
             <div id="names" class="preferences py-5">
 
@@ -107,7 +108,7 @@
 
                         let heure = parseInt( parseInt(minutes/60));
 
-                        console.log("**",minutes,minutesrestantes,parseInt(minutesrestantes/30));
+                        //console.log("**",minutes,minutesrestantes,parseInt(minutesrestantes/30));
                         if (parseInt(minutesrestantes/30) > 0){
                             minutesrestantes = 30;
                         }
@@ -134,7 +135,7 @@
                         console.log(DicMatiere);
 
                         let bay = document.createElement('div');
-                        bay.setAttribute("class","session mx-3");
+                        bay.setAttribute("class","session mx-4");
                         bay.innerHTML = " <h4 id='session-label' class='session-title my-2 '><u class='highlight rounded'>" + nomMatiere + "</u></h4>   <div class='plus-minus'>  <button id='session-plus'  class='session-plus' onclick='plus(this)' value='" + nomMatiere + "' >+</button> <span id='nb-" + nomMatiere + "' class='session-time mx-2'>" + nbH + "</span>  <button id='session-minus'  class='session-minus' onclick='moin(this)'  value='" + nomMatiere + "' >–</button> </div> ";
 
                         divNames.appendChild(bay);
@@ -174,28 +175,30 @@
 
 
                         }
-                        majAfficheAllNum()
+
                         console.log('+++++>',DicMatiere);
 
                     }
                     function moin(bay) {
                         let diminpourcentage = (pourcentage/(listesMatiere.length-1));
-
+                        console.log('moin');
                         //let listeMa = Object.keys(DicMatiere);
 
                         for(let i = 0; i < listesMatiere.length; i++) {
                             if(listesMatiere[i] == bay.value) {
-                                DicMatiere[listesMatiere[i]] *= (1+pourcentage*-1); 
+                                DicMatiere[listesMatiere[i]] *= (1+(pourcentage*-1)); 
                                 majAfficheNum(listesMatiere[i]);
 
+
                             } else {
-                                DicMatiere[listesMatiere[i]] *= (1-diminpourcentage*-1); 
+                                DicMatiere[listesMatiere[i]] *= (1-(diminpourcentage*-1)); 
                                 majAfficheNum(listesMatiere[i]);
+
 
                             }
 
                         }
-                        majAfficheAllNum();
+
                         console.log('----->',DicMatiere);
 
 
@@ -231,7 +234,7 @@
 
             </div>
 
-            <div class="buttons mt-5">
+            <div class="buttons mb-5">
                 <button id="start" class="start-button px-5 py-4" onclick="refresh()">REFRESH</button>
 
             </div>

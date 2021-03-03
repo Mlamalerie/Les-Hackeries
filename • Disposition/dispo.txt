@@ -1,3 +1,3 @@
 13-16;20-01
 &
-DataMining, StatInf,CV
+DataMining, Coursera,CV
