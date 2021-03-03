@@ -7,233 +7,51 @@
 
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="style.css">
 
 
 
 
-        <style>
-
-            @import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,300,300italic,400italic,500,500italic,700,700italic&subset=latin,cyrillic);
-            body {
-                display: flex;
-                flex-direction: row;
-                margin: 0rem;
-                min-height: 100vh;
-                height: 100%;
-                background: linear-gradient( 135deg, tomato, tomato, #dd5239, #d4462d, #dd5239, #cc3c22);
-                color: snow;
-                font-weight: 400;
-                font-size: 16px;
-                font-family: 'Fira Sans', sans-serif;
-                flex-wrap: nowrap;
-                justify-content: center;
-                align-content: center;
-                align-items: center;
-            }
-
-            .pomodoro-conteiner {
-                margin-top: 0rem;
-                display: flex;
-                flex-direction: column;
-                width: 16rem;
-                height: 29rem;
-                order: 0;
-                flex: 0 1 auto;
-                align-self: auto;
-                flex-wrap: nowrap;
-                justify-content: space-between;
-                align-content: space-between;
-                align-items: center;
-            }
-
-            @media all and (min-width: 360px) {}
-
-            .title {
-                margin-top: 0rem;
-                margin-bottom: 0rem;
-                text-align: center;
-                text-transform: uppercase;
-                font-size: 3rem;
-            }
-
-            .subtitle {
-                margin-top: 0rem;
-                text-align: center;
-                font-weight: 300;
-                font-size: 0.75rem;
-            }
-
-            .preferences {
-                display: flex;
-                flex-direction: row;
-                width: 100%;
-                text-align: center;
-                font-size: 1.2rem;
-                flex-wrap: nowrap;
-                justify-content: space-around;
-            }
-
-
-            .session {}
-
-            .session-title {
-                margin-top: .5rem;
-                margin-bottom: .5rem;
-                transition: all 0.5s ease;
-            }
-
-            .session-plus {
-                display: block;
-                width: 1.7rem;
-                height: 1.7rem;
-                border: 1px solid #c4402f;
-                border-radius: 4px;
-                background-color: #CC4331;
-                box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
-                color: white;
-                text-align: center;
-                text-decoration: none;
-                text-shadow: 0 -1px -1px #af3a2a;
-                font-weight: 800;
-                font-size: 1rem;
-                transition: all 0.15s ease-in-out;
-            }
-
-            .session-plus:hover {
-                background-color: #d25544;
-                box-shadow: 0 4px 0 #c4402f, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
-                text-shadow: 0 -1px -1px #c4402f;
-            }
-
-            .session-plus:active {
-                margin-top: -1px;
-                box-shadow: none;
-            }
-
-            .session-time {
-                min-width: 4.5rem;
-            }
-
-            .session-minus {
-                display: block;
-                width: 1.7rem;
-                height: 1.7rem;
-                border: 1px solid #c4402f;
-                border-radius: 4px;
-                background-color: #CC4331;
-                box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
-                color: white;
-                text-align: center;
-                text-decoration: none;
-                text-shadow: 0 -1px -1px #af3a2a;
-                font-weight: 800;
-                font-size: 1rem;
-                transition: all 0.15s ease-in-out;
-            }
-
-            .session-minus:hover {
-                background-color: #d25544;
-                box-shadow: 0 4px 0 #c4402f, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
-                text-shadow: 0 -1px -1px #c4402f;
-            }
-
-            .session-minus:active {
-                margin-top: -1px;
-                box-shadow: none;
-            }
-
-            .plus-minus {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                justify-content: space-between;
-                align-content: center;
-                align-items: center;
-            }
-
-            .clock {
-                display: flex;
-                flex-direction: column;
-                width: 5rem;
-                height: 5rem;
-                font-size: 2rem;
-                flex-wrap: nowrap;
-                justify-content: center;
-                align-content: center;
-                align-items: center;
-            }
-
-            .clock-title {
-                margin-bottom: 0rem;
-            }
-
-            .timer {
-                font-weight: 800;
-                font-size: 5rem;
-            }
-
-
-
-            .start-button {
-                display: block;
-
-
-
-                border: 1px solid #c4402f;
-                border-radius: 4px;
-                background-color: #CC4331;
-                box-shadow: 0 4px 0 #af3a2a, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
-                color: white;
-                text-align: center;
-
-                text-decoration: none;
-                text-shadow: 0 -1px -1px #af3a2a;
-                font-weight: 800;
-                font-size: 1rem;
-                transition: all 0.15s ease-in-out;
-            }
-
-            .start-button:hover {
-                background-color: #d25544;
-                box-shadow: 0 4px 0 #c4402f, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
-                text-shadow: 0 -1px -1px #c4402f;
-            }
-
-            .start-button:active {
-                margin-top: -1px;
-                box-shadow: none;
-            }
-
-
-
-            .red {
-                font-weight: 800;
-                font-size: 2rem;
-                transition: all 0.5s ease;
-            }
-        </style>
-
-
-        <title>Hello, world!</title>
+        <title>Disposition</title>
     </head>
     <body onload="">
 
 
         <div class="pomodoro-conteiner">
-            <h1 class="title">Disposition <span id="heureTotal"></span> </h1>
-            <p class="subtitle">blabalbalbal blab alba l</p>
+            <header class="mb-4 p-5">
+                <h1 class="title">Disposition <span id="heureTotal"></span> </h1>
+                <p class="subtitle mt-2">Saisisser vos plages horaires puis vos tâches à remplir dans la journée. Appuyer sur REFRESH. Ajuster le temps de travail selon vos envies ! <br>(<a href="https://www.linkedin.com/in/mlamalisaidsalimo/" class="text-light">Mlamali SAID SALIMO</a>)</p>
+               
+            </header>
 
-            <input class="form-control" type="text" id="dispoheure"  value="13-16; 20-01">
-            <input class="form-control" type="text" id="dispotxt" value="DataMining, StatInf,CV">
 
-            <div id="names" class="preferences">
+            <input  class="form-control mb-3 p-2 py-3 form-control-sm text-light shadow-sm rounded text-center" type="text" id="dispoheure"  value="10-12; 14-17;">
+            <input class="form-control  mb-3 p-2 form-control-sm text-light shadow-sm rounded text-center " type="text" id="dispotxt" value="DataMining,  StatInf, Faire CV">
+
+            <div id="names" class="preferences py-5">
 
 
                 <script>
                     var inputtxt = document.getElementById('dispotxt');
                     var inputheures = document.getElementById('dispoheure');
+
+
+                    // Execute a function when the user releases a key on the keyboard
+                    inputtxt.addEventListener("keyup", function(event) {
+                        // Number 13 is the "Enter" key on the keyboard
+                        if (event.keyCode === 13) {
+                            // Cancel the default action, if needed
+                            event.preventDefault();
+                            // Trigger the button element with a click
+                            document.getElementById("start").click();
+                        }
+                    });
+
+
                     var heureTotal;
                     var DicMatiere = {};
+                    var pourcentage = 0.25;
+
 
                     function getMatiere() {
                         let txt = inputtxt.value.trim();
@@ -259,7 +77,7 @@
 
                                 a = parseInt(xx[0]);
                                 b = parseInt(xx[1]);
-                                console.log(l,xx,a,b);
+
                                 if((b < a) && (a < 24 && b >= 0)){
                                     b += 24
                                 }
@@ -274,10 +92,6 @@
 
 
                     var divNames = document.getElementById('names');
-                    var listesMatiere = ['Data',"math","caca"];
-
-
-
                     function createAllBtn() {
                         for(let i = 0 ; i < listesMatiere.length; i++) {
                             creer1Btn(listesMatiere[i]);
@@ -311,7 +125,7 @@
                         if (text.length <= 1) {
                             text="~";
                         }
-                        return text
+                        return text;
 
                     }
 
@@ -321,7 +135,7 @@
 
                         let bay = document.createElement('div');
                         bay.setAttribute("class","session mx-3");
-                        bay.innerHTML = "<h4 id='session-label' class='session-title'>" + nomMatiere + "</h4>   <div class='plus-minus'>  <button id='session-plus'  class='session-plus' onclick='plus(this)' value='" + nomMatiere + "' >+</button> <span id='nb-" + nomMatiere + "' class='session-time'>" + nbH + "</span>  <button id='session-minus'  class='session-minus' onclick='moin(this)'  value='" + nomMatiere + "' >–</button> </div> ";
+                        bay.innerHTML = " <h4 id='session-label' class='session-title my-2 '><u class='highlight rounded'>" + nomMatiere + "</u></h4>   <div class='plus-minus'>  <button id='session-plus'  class='session-plus' onclick='plus(this)' value='" + nomMatiere + "' >+</button> <span id='nb-" + nomMatiere + "' class='session-time mx-2'>" + nbH + "</span>  <button id='session-minus'  class='session-minus' onclick='moin(this)'  value='" + nomMatiere + "' >–</button> </div> ";
 
                         divNames.appendChild(bay);
 
@@ -342,7 +156,7 @@
                         document.getElementById('nb-'+val).innerHTML =  afficherHorloge(DicMatiere[val] ) ;    
                     }
 
-                    var pourcentage = 0.25;
+
                     function plus(bay) { 
                         console.log('plus');
                         let diminpourcentage = (pourcentage/(listesMatiere.length-1));
@@ -395,7 +209,7 @@
                         listesMatiere = getMatiere();
                         console.log(listesMatiere);
                         heureTotal = getHeures();
-                        document.getElementById('heureTotal').innerHTML = heureTotal + 'h';
+                        document.getElementById('heureTotal').innerHTML = ": <span class='highlight rounded'>" + heureTotal + 'h </span>';
                         createDic();
 
                         if (heureTotal > 0){
@@ -410,19 +224,15 @@
 
 
 
+
+
+
                 </script>
 
             </div>
-            <div id="clock" class="clock">
-                <h4 class="clock-title"></h4>
-                <div id="timer" class="timer">
-                    <div class="">
-                        <!--                        <div class="progress">25:00</div>-->
-                    </div>
-                </div>
-            </div>
-            <div class="buttons">
-                <button id="start" class="start-button px-5 py-3" onclick="refresh()">Refresh</button>
+
+            <div class="buttons mt-5">
+                <button id="start" class="start-button px-5 py-4" onclick="refresh()">REFRESH</button>
 
             </div>
         </div>
