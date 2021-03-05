@@ -9,7 +9,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="style.css">
 
-<link rel="shortcut icon" href="img/icon.ico">
+        <link rel="shortcut icon" href="img/icon.ico">
 
 
         <title>Disposition</title>
@@ -26,8 +26,8 @@
             </header>
 
 
-            <input  class="form-control mb-3 p-2 py-3 form-control-sm text-light shadow-sm rounded text-center" type="text" id="dispoheure"  value="10-12; 14-17;">
-            <input class="form-control  mb-3 p-2 form-control-sm text-light shadow-sm rounded text-center " type="text" id="dispotxt" placeholder="DataMining,  StatInf, Faire CV">
+            <input  class="form-control mb-3 p-2 py-3 form-control-sm text-light shadow-sm rounded text-center" type="text" id="dispoheure"  value="00-05; 10-20;">
+            <input class="form-control  mb-3 p-2 form-control-sm text-light shadow-sm rounded text-center " type="text" id="dispotxt" value="DataMining,  StatInf, Faire CV">
 
             <div id="names" class="preferences py-5">
 
@@ -51,9 +51,9 @@
 
                     var heureTotal;
                     var DicMatiere = {};
-                    var pourcentage = 0.25;
-
-
+                    var pourcentage = 0.5;
+                                      // var gray = 0.5/(1+ (pourcentage));
+                    var gray = 0.35;
                     function getMatiere() {
                         let txt = inputtxt.value.trim();
                         let res = txt.split(',')
@@ -101,6 +101,7 @@
                     }
 
                     function afficherHorloge(nb) {
+                       
                         let minutes = nb*60;
 
                         let minutesrestantes = parseInt(minutes % 60);
@@ -165,17 +166,17 @@
 
                         for(let i = 0; i < listesMatiere.length; i++) {
                             if(listesMatiere[i] == bay.value) {
-                                DicMatiere[listesMatiere[i]] *= (1+pourcentage); 
+                                DicMatiere[listesMatiere[i]] += gray * (1+pourcentage); 
                                 majAfficheNum(listesMatiere[i]);
 
                             } else {
-                                DicMatiere[listesMatiere[i]] *= (1-diminpourcentage);
+                                DicMatiere[listesMatiere[i]] -= gray * (1-diminpourcentage);
                                 majAfficheNum(listesMatiere[i]);
                             }
 
 
                         }
-
+                        
                         console.log('+++++>',DicMatiere);
 
                     }
@@ -185,18 +186,21 @@
                         //let listeMa = Object.keys(DicMatiere);
 
                         for(let i = 0; i < listesMatiere.length; i++) {
+                           
+                            
                             if(listesMatiere[i] == bay.value) {
-                                DicMatiere[listesMatiere[i]] *= (1+(pourcentage*-1)); 
+                                DicMatiere[listesMatiere[i]] -= gray *(1+(pourcentage)); 
+
                                 majAfficheNum(listesMatiere[i]);
 
 
                             } else {
-                                DicMatiere[listesMatiere[i]] *= (1-(diminpourcentage*-1)); 
+                                DicMatiere[listesMatiere[i]] += gray * (1-(diminpourcentage)); 
                                 majAfficheNum(listesMatiere[i]);
 
 
                             }
-
+                           
                         }
 
                         console.log('----->',DicMatiere);
