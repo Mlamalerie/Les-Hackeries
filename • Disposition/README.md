@@ -1,14 +1,15 @@
-# Dispostion
+# Disposition
 Outil pour s'organiser dans la journée.
 
 ### ⚙ How to run it
 C'est simple.
 
+### the story of the code
+blabla
 ### 📸 Screenshots 
-![](img/screen%20(1) "Screen 1")
-![](img/screen%20(2) "Screen 2")
+
+<img src="img/screen%20(1).png">
+
 
 ---
-
-### 👨🏾‍💻 Auteur
 [Mlamali SAID SALIMO](https://www.linkedin.com/in/mlamalisaidsalimo)  <br/>
