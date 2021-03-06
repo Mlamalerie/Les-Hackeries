@@ -26,8 +26,8 @@
             </header>
 
 
-            <input  class="form-control mb-3 p-2 py-3 form-control-sm text-light shadow-sm rounded text-center" type="text" id="dispoheure"  value="00-05; 10-20;">
-            <input class="form-control  mb-3 p-2 form-control-sm text-light shadow-sm rounded text-center " type="text" id="dispotxt" value="DataMining,  StatInf, Faire CV">
+            <input  class="form-control mb-3 p-2 py-3 form-control-sm text-light shadow-sm rounded text-center" type="text" id="dispoheure"  value="8-10; 14-18;">
+            <input class="form-control  mb-3 p-2 form-control-sm text-light shadow-sm rounded text-center " type="text" id="dispotxt" placeholder="DataMining,  StatInf, Faire CV">
 
             <div id="names" class="preferences py-5">
 
@@ -52,8 +52,8 @@
                     var heureTotal;
                     var DicMatiere = {};
                     var pourcentage = 0.5;
-                                      // var gray = 0.5/(1+ (pourcentage));
-                    var gray = 0.35;
+                    var gray = 0.5/(1+ (pourcentage));
+                    //var gray = 0.35;
                     function getMatiere() {
                         let txt = inputtxt.value.trim();
                         let res = txt.split(',')
@@ -101,7 +101,8 @@
                     }
 
                     function afficherHorloge(nb) {
-                       
+
+
                         let minutes = nb*60;
 
                         let minutesrestantes = parseInt(minutes % 60);
@@ -158,53 +159,66 @@
                         document.getElementById('nb-'+val).innerHTML =  afficherHorloge(DicMatiere[val] ) ;    
                     }
 
+                    function sommeDic() {
+                        let s = 0.0;
+
+                        for(let i = 0; i < listesMatiere.length; i++) {
+                            s += DicMatiere[listesMatiere[i]];
+                        }
+                        return s;
+                    }
 
                     function plus(bay) { 
                         console.log('plus');
-                        let diminpourcentage = (pourcentage/(listesMatiere.length-1));
-                        //let listeMa = Object.keys(DicMatiere);
+                        if (DicMatiere[bay.value] < heureTotal){
+                            let diminpourcentage = (pourcentage/(listesMatiere.length-1));
+                            //let listeMa = Object.keys(DicMatiere);
 
-                        for(let i = 0; i < listesMatiere.length; i++) {
-                            if(listesMatiere[i] == bay.value) {
-                                DicMatiere[listesMatiere[i]] += gray * (1+pourcentage); 
-                                majAfficheNum(listesMatiere[i]);
+                            for(let i = 0; i < listesMatiere.length; i++) {
+                                if(listesMatiere[i] == bay.value) {
+                                    DicMatiere[listesMatiere[i]] += gray * (1+pourcentage); 
+                                    majAfficheNum(listesMatiere[i]);
 
-                            } else {
-                                DicMatiere[listesMatiere[i]] -= gray * (1-diminpourcentage);
-                                majAfficheNum(listesMatiere[i]);
+                                } else {
+                                    DicMatiere[listesMatiere[i]] -= gray * (1-diminpourcentage);
+                                    majAfficheNum(listesMatiere[i]);
+
+
+                                }
+
+
                             }
 
-
+                            console.log('+++++>',DicMatiere);
                         }
-                        
-                        console.log('+++++>',DicMatiere);
 
                     }
                     function moin(bay) {
-                        let diminpourcentage = (pourcentage/(listesMatiere.length-1));
+
                         console.log('moin');
-                        //let listeMa = Object.keys(DicMatiere);
-
-                        for(let i = 0; i < listesMatiere.length; i++) {
-                           
-                            
-                            if(listesMatiere[i] == bay.value) {
-                                DicMatiere[listesMatiere[i]] -= gray *(1+(pourcentage)); 
-
-                                majAfficheNum(listesMatiere[i]);
+                        if (DicMatiere[bay.value] > 0){
+                            let diminpourcentage = (pourcentage/(listesMatiere.length-1));
+                            for(let i = 0; i < listesMatiere.length; i++) {
 
 
-                            } else {
-                                DicMatiere[listesMatiere[i]] += gray * (1-(diminpourcentage)); 
-                                majAfficheNum(listesMatiere[i]);
+                                if(listesMatiere[i] == bay.value) {
+                                    DicMatiere[listesMatiere[i]] -= gray *(1+(pourcentage)); 
 
+                                    majAfficheNum(listesMatiere[i]);
+
+
+
+                                } else {
+                                    DicMatiere[listesMatiere[i]] += gray * (1-(diminpourcentage)); 
+                                    majAfficheNum(listesMatiere[i]);
+
+
+                                }
 
                             }
-                           
+
+                            console.log('----->',DicMatiere);
                         }
-
-                        console.log('----->',DicMatiere);
-
 
                     }
 
