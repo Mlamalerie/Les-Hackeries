@@ -6,4 +6,4 @@ They make my life easier.
 
 ---
 [Mlamali Said Salimo | LinkedIn](https://www.linkedin.com/in/mlamalisaidsalimo/) <br>
-[Mlamali - "Wanabilini" | Genius](genius.com/artists/Wanabilini)
+[Mlamali | SoundCloud](https://soundcloud.com/wanabilini)
