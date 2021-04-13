@@ -5,5 +5,5 @@ These softwares all have one thing in common: I created them to meet an urgent n
 They make my life easier.
 
 ---
-[Mlamali Said Salimo | LinkedIn](https://www.linkedin.com/in/mlamalisaidsalimo/).
-[Mlamali aka "Wanabilini" | Genuis](genius.com/artists/Wanabilini)
+[Mlamali Said Salimo | LinkedIn](https://www.linkedin.com/in/mlamalisaidsalimo/). <br>
+[Mlamali - "Wanabilini" | Genius](genius.com/artists/Wanabilini).
