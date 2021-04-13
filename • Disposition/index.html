@@ -168,6 +168,21 @@
                         return s;
                     }
 
+                    function Normaliser() {
+    
+    let s = sommeDic();
+    let h = getHeures();
+    console.log('Normaliser',sommeDic(),getHeures());
+    console.log('NormaliserDIC',DicMatiere);
+
+    for (let i = 0; i < listesMatiere.length; i++) {
+        DicMatiere[listesMatiere[i]] = (DicMatiere[listesMatiere[i]]/s)*h;
+        majAfficheNum(listesMatiere[i]);
+    }
+    console.log('NormaliserEND',sommeDic(),getHeures());
+    console.log('NormaliserDIC',DicMatiere);
+}
+                    
                     function plus(bay) { 
                         console.log('plus');
                         if (DicMatiere[bay.value] < heureTotal){
@@ -181,6 +196,9 @@
 
                                 } else {
                                     DicMatiere[listesMatiere[i]] -= gray * (1-diminpourcentage);
+                                    if(DicMatiere[listesMatiere[i]] < 0) {
+                                        DicMatiere[listesMatiere[i]] = 0
+                                    }
                                     majAfficheNum(listesMatiere[i]);
 
 
@@ -191,6 +209,7 @@
 
                             console.log('+++++>',DicMatiere);
                         }
+                        Normaliser()
 
                     }
                     function moin(bay) {
@@ -202,9 +221,13 @@
 
 
                                 if(listesMatiere[i] == bay.value) {
-                                    DicMatiere[listesMatiere[i]] -= gray *(1+(pourcentage)); 
+                                    DicMatiere[listesMatiere[i]] -= gray *(1+(pourcentage));
+                                     if(DicMatiere[listesMatiere[i]] < 0) {
+                                        DicMatiere[listesMatiere[i]] = 0
+                                    }
 
                                     majAfficheNum(listesMatiere[i]);
+                                    
 
 
 
@@ -219,6 +242,7 @@
 
                             console.log('----->',DicMatiere);
                         }
+                        Normaliser()
 
                     }
 
