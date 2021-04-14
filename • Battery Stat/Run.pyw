@@ -64,7 +64,7 @@ def DiffTime(a,b):
 
 
 def Run(dureeMax,delaySec,n=2000):
-    #notify()
+    notify()
     print()
     tabTime = []
     tabPourcentage = []
@@ -74,7 +74,6 @@ def Run(dureeMax,delaySec,n=2000):
     i = 0
     try:
         while i < n and distanceH < dureeMax:
-            Hprec = distanceH # pour voir si lheure change
             tabTime.append( returnTime())
             b = returnBattery(tabTime[-1])
             tabPourcentage.append( b[0] )
@@ -83,8 +82,7 @@ def Run(dureeMax,delaySec,n=2000):
             i += 1
             distanceH, distanceM = DiffTime(tabTime[0],tabTime[-1])
             
-            if distanceH != Hprec: # heure a changé
-                Hprec = distanceH
+            if distanceM != 0 and distanceM % 60 == 0: # heure a changé
                 print("heure a changé")
                 notify(tabPourcentage[-1],tabBoolPlug[-1])
             
@@ -94,8 +92,9 @@ def Run(dureeMax,delaySec,n=2000):
                 print(f"minutes={distanceM}")
             else:
                 print(f"heures={distanceH}")
-                
-            notify(tabPourcentage[-1],tabBoolPlug[-1],True) # notifier si le chargeur est branché
+            
+	    if distanceM % 5 == 0:	    
+            	notify(tabPourcentage[-1],tabBoolPlug[-1],True) # notifier si le chargeur est branché
             
             data = pd.DataFrame(data={'datetime' : tabTime, '%' : tabPourcentage,'plugged' : tabBoolPlug})
             SaveCSV(data, tabTime[0],tabTime[-1],delaySec)

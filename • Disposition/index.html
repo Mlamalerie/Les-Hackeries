@@ -52,7 +52,7 @@
                     var heureTotal;
                     var DicMatiere = {};
                     var pourcentage = 0.5;
-                    var gray = 0.5/(1+ (pourcentage));
+                    var gray = 0.25 /*/(1+ (pourcentage));*/
                     //var gray = 0.35;
                     function getMatiere() {
                         let txt = inputtxt.value.trim();
@@ -78,6 +78,7 @@
 
                                 a = parseInt(xx[0]);
                                 b = parseInt(xx[1]);
+                                
 
                                 if((b < a) && (a < 24 && b >= 0)){
                                     b += 24
@@ -100,8 +101,14 @@
 
                     }
 
-                    function afficherHorloge(nb) {
+                    function round(value, step) {
+                        step || (step = 1.0);
+                        var inv = 1.0 / step;
+                        return Math.round(value * inv) / inv;
+                    }
 
+                    function afficherHorloge(nb) {
+                        nb = round(nb,0.1);
 
                         let minutes = nb*60;
 
@@ -118,6 +125,7 @@
                             minutesrestantes = 0;
                         }
 
+                        console.log("horloge",heure,minutesrestantes)
                         text = "";
                         if (heure > 0){
                             text += heure.toString() +"h ";
@@ -168,6 +176,21 @@
                         return s;
                     }
 
+                    function Normaliser() {
+
+                        let s = sommeDic();
+                        let h = getHeures();
+                        console.log('Normaliser',sommeDic(),getHeures());
+                        console.log('NormaliserDIC',DicMatiere);
+
+                        for (let i = 0; i < listesMatiere.length; i++) {
+                            DicMatiere[listesMatiere[i]] = (DicMatiere[listesMatiere[i]]/s)*h;
+                            majAfficheNum(listesMatiere[i]);
+                        }
+                        console.log('NormaliserEND',sommeDic(),getHeures());
+                        console.log('NormaliserDIC',DicMatiere);
+                    }
+
                     function plus(bay) { 
                         console.log('plus');
                         if (DicMatiere[bay.value] < heureTotal){
@@ -178,19 +201,12 @@
                                 if(listesMatiere[i] == bay.value) {
                                     DicMatiere[listesMatiere[i]] += gray * (1+pourcentage); 
                                     majAfficheNum(listesMatiere[i]);
-
-                                } else {
-                                    DicMatiere[listesMatiere[i]] -= gray * (1-diminpourcentage);
-                                    majAfficheNum(listesMatiere[i]);
-
-
-                                }
-
-
+                                } 
                             }
 
                             console.log('+++++>',DicMatiere);
                         }
+                        Normaliser();
 
                     }
                     function moin(bay) {
@@ -202,23 +218,20 @@
 
 
                                 if(listesMatiere[i] == bay.value) {
-                                    DicMatiere[listesMatiere[i]] -= gray *(1+(pourcentage)); 
+                                    DicMatiere[listesMatiere[i]] -= gray *(1+(pourcentage));
+                                    if(DicMatiere[listesMatiere[i]] < 0) {
+                                        DicMatiere[listesMatiere[i]] = 0
+                                    }
 
                                     majAfficheNum(listesMatiere[i]);
 
-
-
-                                } else {
-                                    DicMatiere[listesMatiere[i]] += gray * (1-(diminpourcentage)); 
-                                    majAfficheNum(listesMatiere[i]);
-
-
-                                }
+                                } 
 
                             }
 
                             console.log('----->',DicMatiere);
                         }
+                        Normaliser()
 
                     }
 
